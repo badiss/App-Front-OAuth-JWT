@@ -1,0 +1,8 @@
+
+.menu {
+    flex: auto;
+}
+
+.container-menu {
+    min-height: 600px;
+}

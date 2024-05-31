@@ -1,0 +1,101 @@
+<div class="container">
+    <mat-card [formGroup]="paymentFormGroup">
+        <mat-card-header>
+            <mat-card-title *ngIf="!isUpdate">
+                Ajouter un payment
+            </mat-card-title>
+            <mat-card-title *ngIf="isUpdate">
+                Modifier un payment
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content  class="form-card-payment" >
+            
+            <div class="top-contenue">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Montant</mat-label>
+                    <input matInput formControlName="amount">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="type">
+                        @for (item of paymentTypes; track item) {
+                            <mat-option [value]="item">{{item}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" *ngIf="isUpdate">
+                    <mat-label>Statut</mat-label>
+                    <mat-select formControlName="status">
+                        @for (item of paymentStatut; track item) {
+                            <mat-option [value]="item">{{item}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Code Etudiant</mat-label>
+                    <input matInput formControlName="codeStudent">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" *ngIf="!isUpdate">
+                    <mat-label>Fichier</mat-label>
+                    <button type="button" mat-icon-button matPrefix (click)="f_input.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <input matInput readonly formControlName="fileName">
+                    <input type="file" hidden #f_input (change)="selectFile($event)" accept="application/pdf">
+                </mat-form-field>
+            </div>
+            
+
+        </mat-card-content>
+
+        <mat-card-actions>
+                <button (click)="savePayment()" *ngIf="!isUpdate" mat-raised-button color="primary">Ajouter Payment</button>
+                <button (click)="updatePayment()" *ngIf="isUpdate" mat-raised-button color="primary">Modifier Payment</button>
+                @if (showProgress) {
+                    <mat-spinner></mat-spinner>
+                }
+        </mat-card-actions>
+
+
+    </mat-card>
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Fichier de payment
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <pdf-viewer 
+              [src]="pdfFileUrl"
+              [render-text]="true"
+              [original-size]="true"
+              [rotation]="0"
+              [show-all]="true"
+              [fit-to-page]="true"
+              [zoom]="1"
+              [zoom-scale]="'page-width'"
+              [external-link-target]="'blank'"
+              [autoresize]="true"
+              [show-borders]="false"
+              (after-load-complete)="afterLoadComplete($event)"
+              style="width: 400px; height: 500px"
+              class="pdf-viewer"
+        ></pdf-viewer>
+        </mat-card-content>
+    </mat-card>
+</div>

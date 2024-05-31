@@ -1,0 +1,12 @@
+.pdf-viewer {
+    height: 100vh;
+    display: block;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.color-message-err {
+    color: red;
+    padding-top: 50px;
+    text-align: center;
+}

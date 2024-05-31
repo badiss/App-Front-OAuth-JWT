@@ -1,0 +1,22 @@
+mat-form-field {
+    display: block;
+}
+
+.form-card-payment {
+    width: 70%;
+}
+
+.pdf-viewer {
+    height: 100vh;
+    display: block;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.color-success {
+    color: green;
+}
+
+.color-failed {
+    color: red;
+}
