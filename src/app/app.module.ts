@@ -37,6 +37,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { appHttpInterceptor } from './interceptors/app-http.interceptor';
+import { CoursModule } from './cours/cours.module';
 
 
 @NgModule({
@@ -77,7 +78,11 @@ import { appHttpInterceptor } from './interceptors/app-http.interceptor';
     MatSelectModule,
     MatSnackBarModule,
     PdfViewerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CoursModule
+  ],
+  exports: [
+    CoursModule
   ],
   providers: [
     provideAnimationsAsync(),

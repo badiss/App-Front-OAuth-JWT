@@ -1,0 +1,19 @@
+
+.link_return {
+    font-size: 12px;
+    color: blue;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 64px;
+    border: none;
+    outline: none;
+    line-height: inherit;
+    user-select: none;
+    overflow: visible;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0);
+    padding-left: 30%;
+}

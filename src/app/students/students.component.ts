@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 })
 export class StudentsComponent implements OnInit {
 
+  public show: boolean = false;
   public students! : Array<Student>;
+  public studentShow: any = null;
   public dataSource : any;
   public displayedColumns: string[] = ['studentId', 'code', 'firstName', 'programId', 'photo', 'action'];
 
@@ -39,6 +41,18 @@ export class StudentsComponent implements OnInit {
 
   studentPayments(student : Student) {
     this.router.navigateByUrl('/admin/student-details/'+student.code);
+  }
+
+  infosStudent(student : Student) {
+    this.show = true;
+    this.studentShow = student;
+    console.log(this.studentShow);
+  }
+
+  cancelInfosStudent() {
+    this.show = false;
+    this.studentShow = null;
+    console.log(this.studentShow);
   }
 
 }

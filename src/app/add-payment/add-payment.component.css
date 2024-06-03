@@ -20,3 +20,7 @@ mat-form-field {
 .color-failed {
     color: red;
 }
+
+.separer-card {
+    margin-top: 20px;
+}

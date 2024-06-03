@@ -9,6 +9,11 @@
         <mat-card-content>
             <mat-toolbar>
                 <button (click)="addPayment()" [disabled]="!isAdmin" mat-raised-button color="primary">Ajouter Payment</button>
+                <a class="link_return"  routerLink="/admin/students">
+                    <mat-icon>keyboard_return</mat-icon>
+                    retour liste étudiants
+                </a>
+                
             </mat-toolbar>
             <div class="top-contenue">
                 <h1>List des payments pour l'étudiant : "{{firstNameStudent}}"</h1>

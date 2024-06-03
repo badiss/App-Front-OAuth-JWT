@@ -55,6 +55,7 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
                     <td mat-cell *matCellDef="let element">
                         <button mat-raised-button color="primary" (click)="studentPayments(element)">Payments</button>
+                        <mat-icon class="icon-eye" (click)="infosStudent(element)">remove_red_eye</mat-icon>
                     </td>
                 </ng-container>
               
@@ -67,6 +68,28 @@
                  aria-label="Select page of periodic elements">
             </mat-paginator>
 
+        </mat-card-content>
+    </mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card class="separer-card" *ngIf="show">
+        <mat-card-header class="padding-header">
+            <mat-card-title>
+                <mat-icon class="icon-close" (click)="cancelInfosStudent()">cancel</mat-icon>
+                Fiche d'un étudiant
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <span class="infos-student">Nom :</span> {{studentShow.firstName}} <br/><br/>
+            <span class="infos-student">Prénom : </span>{{studentShow.lastName}} <br/><br/>
+            <span class="infos-student">Programme ID : </span>{{studentShow.programId}} <br/><br/>
+            <span class="infos-student">Code : </span>{{studentShow.code}} <br/><br/>
+            <span class="infos-student">Adresse : </span>{{studentShow.studentInformations.address}} <br/><br/>
+            <span class="infos-student">Ville : </span>{{studentShow.studentInformations.city}} <br/><br/>
+            <span class="infos-student">E-mail : </span>{{studentShow.studentInformations.email}} <br/><br/>
+            <span class="infos-student">Num téléphone : </span>{{studentShow.studentInformations.phoneNumber}} <br/><br/>
+            <span class="infos-student">Niveau : </span>{{studentShow.studentInformations.classe}} 
         </mat-card-content>
     </mat-card>
 </div>

@@ -1,5 +1,5 @@
 export interface Student {
-    id : string,
+    studentId : number,
     code : string,
     firstName : string,
     lastName : string,
@@ -15,6 +15,15 @@ export interface Payment {
     status : string,
     file : string,
     student : Student
+}
+
+export interface Cours {
+    idCours : number,
+    titre : string,
+    date : number,
+    heure : string,
+    obligatoire : string,
+    students : Student[],
 }
 
 export enum PaymentType {

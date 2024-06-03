@@ -47,6 +47,10 @@ const routes: Routes = [
         //data : { roles : ['ADMIN', 'USER'] }
       },
       { path: "payment-details/:id", component: PaymentDetailsComponent },
+      {
+        path: 'cours',
+        loadChildren: () => import('./cours/cours-routing.module').then(module => module.CoursRoutingModule),
+      }
 
   ] },
 ];
