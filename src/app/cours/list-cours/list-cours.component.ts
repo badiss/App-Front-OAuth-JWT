@@ -5,6 +5,7 @@ import { Cours } from '../../model';
 import { CourService } from '../../servives/cour.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthService } from '../../servives/auth.service';
 
 @Component({
   selector: 'app-list-cours',
@@ -13,17 +14,24 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListCoursComponent implements OnInit {
 
+  public showStudents: boolean = false;
+  public infosCoursSearch: any = null;
+  isAdmin!: boolean;
   public cours! : Array<Cours>;
   public dataSource : any;
   public displayedColumns: string[] = ['idCours', 'titre', 'date', 'heure', 'obligatoire', 'action'];
+
+  public dataSourceStudent : any;
+  public displayedColumnsStudent: string[] = ['firstName', 'lastName', 'code', 'email'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private courService: CourService, private router: Router) {}
+  constructor(private courService: CourService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.isAdmin = this.authService.roleUserConected;
     this.courService.getListCours().subscribe({
       next : data => {
         this.cours = data;
@@ -38,7 +46,24 @@ export class ListCoursComponent implements OnInit {
   }
 
   consulterStudent(ele: Cours) {
+    this.infosCoursSearch = ele;
+    this.showStudents = true;
 
+    this.dataSourceStudent = new MatTableDataSource(ele.students);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  cancelStudents() {
+    this.showStudents = false;
+  }
+
+  addCours() {
+    this.router.navigateByUrl('admin/cours/add-cours');
+  }
+
+  affectationStudentCours() {
+    this.router.navigateByUrl('admin/cours/affectation-student-cours');
   }
 
 }

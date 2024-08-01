@@ -12,9 +12,13 @@ export class CourService {
   constructor(private httpClient: HttpClient) { }
 
   /**
-   * List de étudiant.
+   * List des cours.
    */
   public getListCours(): Observable<Array<Cours>> {
     return this.httpClient.get<Array<Cours>>(environment.backendHost+"/listCours");
+  }
+
+  public ajouterCour(formData: any): Observable<Cours> {
+    return this.httpClient.post<Cours>(environment.backendHost+"/addCour", formData);
   }
 }

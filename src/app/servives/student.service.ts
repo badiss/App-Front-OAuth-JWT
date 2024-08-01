@@ -25,4 +25,11 @@ export class StudentService {
   public getStudentWithCode(code: string): Observable<Student> {
     return this.httpClient.get<Student>(environment.backendHost+"/student/"+code);
   }
+
+  /**
+   * Affectation d'un étudiant a un ou plusieurs cours.
+   */
+ /* public modifierPayment(formData: any, id:number): Observable<Payment> {
+    return this.httpClient.put<Payment>(environment.backendHost+"/updatePayment/"+id, formData);
+  }*/
 }

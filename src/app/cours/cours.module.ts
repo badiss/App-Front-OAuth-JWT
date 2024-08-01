@@ -23,11 +23,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AddCoursComponent } from './add-cours/add-cours.component';
+import { AffectationStudentCoursComponent } from './affectation-student-cours/affectation-student-cours.component';
 
 
 @NgModule({
   declarations: [
-    ListCoursComponent
+    ListCoursComponent,
+    AddCoursComponent,
+    AffectationStudentCoursComponent
   ],
   imports: [
     CommonModule,

@@ -6,3 +6,7 @@
 .container-menu {
     min-height: 600px;
 }
+
+.active-list-item {
+    color: #3F51B5 !important;
+}
