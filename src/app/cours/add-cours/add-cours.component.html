@@ -1,0 +1,62 @@
+<div class="container">
+    <mat-card [formGroup]="coursFormGroup">
+        <mat-card-header>
+            <mat-card-title>
+                Ajouter un nouveau cour
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content  class="form-card-cour" >
+
+            <mat-toolbar>
+                <a class="link_return"  routerLink="/admin/cours">
+                    <mat-icon>keyboard_return</mat-icon>
+                    retour liste des cours
+                </a>
+                
+            </mat-toolbar>
+            
+            <div class="top-contenue">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Titre</mat-label>
+                    <input matInput formControlName="titre">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Obligatoire</mat-label>
+                    <mat-select formControlName="obligatoire">
+                        <mat-option [value]="true">Présence Obligatoire</mat-option>
+                        <mat-option [value]="false">Présence non Obligatoire</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Heure</mat-label>
+                    <input matInput formControlName="heure">
+                </mat-form-field>
+            </div>
+            
+
+        </mat-card-content>
+
+        <mat-card-actions>
+                <button (click)="saveCour()" mat-raised-button color="primary">Ajouter Payment</button>
+                @if (showProgress) {
+                    <mat-spinner></mat-spinner>
+                }
+        </mat-card-actions>
+
+
+    </mat-card>
+
+</div>
+    

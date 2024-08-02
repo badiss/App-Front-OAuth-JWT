@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-card [formGroup]="affectationFormGroup">
+        <mat-card-header>
+            <mat-card-title>
+                Affectation Etudiant dans les cours
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content  class="form-card-cour" >
+
+            <mat-toolbar>
+                <a class="link_return"  routerLink="/admin/cours">
+                    <mat-icon>keyboard_return</mat-icon>
+                    retour liste des cours
+                </a>
+            </mat-toolbar>
+            
+            <div class="top-contenue">
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Etudiants</mat-label>
+                    <mat-select formControlName="studentId">
+                        @for (item of students; track item) {
+                            <mat-option [value]="item.studentId">{{item.firstName}} {{item.lastName}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Cours</mat-label>
+                    <mat-select formControlName="courId" multiple>
+                        @for (item of cours; track item) {
+                            <mat-option [value]="item">{{item.titre}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button (click)="affectation()" mat-raised-button color="primary">Affectation</button>
+            @if (showProgress) {
+                <mat-spinner></mat-spinner>
+            }
+        </mat-card-actions>
+
+
+    </mat-card>
+
+</div>
+    

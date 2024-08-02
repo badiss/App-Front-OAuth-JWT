@@ -1,0 +1,37 @@
+mat-form-field {
+    display: block;
+}
+
+.form-card-cour {
+    width: 70%;
+}
+
+.color-success {
+    color: green;
+}
+
+.color-failed {
+    color: red;
+}
+
+.separer-card {
+    margin-top: 20px;
+}
+
+.link_return {
+    font-size: 12px;
+    color: blue;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 64px;
+    border: none;
+    outline: none;
+    line-height: inherit;
+    user-select: none;
+    overflow: visible;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0);
+}
