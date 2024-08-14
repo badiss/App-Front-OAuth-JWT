@@ -21,16 +21,18 @@
                     <mat-label>Etudiants</mat-label>
                     <mat-select formControlName="studentId">
                         @for (item of students; track item) {
-                            <mat-option [value]="item.studentId">{{item.firstName}} {{item.lastName}}</mat-option>
+                            <mat-option [value]="item.studentId" (click)="SelectedStudent(item.studentId)">{{item.firstName}} {{item.lastName}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Cours</mat-label>
-                    <mat-select formControlName="courId" multiple>
+                    <mat-select formControlName="coursIds" multiple>
                         @for (item of cours; track item) {
-                            <mat-option [value]="item">{{item.titre}}</mat-option>
+                            <mat-option [value]="item.idCours" [disabled]="item.disabledCour || !affectationFormGroup.value.studentId">
+                                {{item.titre}}
+                            </mat-option>
                         }
                     </mat-select>
                 </mat-form-field>

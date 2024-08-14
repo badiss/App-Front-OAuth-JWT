@@ -9,4 +9,8 @@
 
 .active-list-item {
     color: #3F51B5 !important;
-}
+} 
+
+.active-list-item_hori {
+    color: #aeb53f !important;
+} 

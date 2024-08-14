@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourService } from '../../servives/cour.service';
 import { StudentService } from '../../servives/student.service';
-import { Cours, Student } from '../../model';
+import { AffectationStudentCoursDTO, Cours, Student } from '../../model';
 
 @Component({
   selector: 'app-affectation-student-cours',
@@ -16,6 +16,8 @@ export class AffectationStudentCoursComponent implements OnInit {
   showProgress: boolean = false;
   public students! : Array<Student>;
   public cours! : Array<Cours>;
+  public formData: any = {};
+   
 
   constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, 
     private courService: CourService, private router: Router, private studentService: StudentService) {
@@ -27,7 +29,7 @@ export class AffectationStudentCoursComponent implements OnInit {
     this.getListCours();
     this.affectationFormGroup = this.fb.group({
       studentId: this.fb.control(''),
-      courId: this.fb.control(''),
+      coursIds: this.fb.control(''),
     });
   }
 
@@ -54,7 +56,33 @@ export class AffectationStudentCoursComponent implements OnInit {
   }
 
   affectation() {
-    console.log(this.affectationFormGroup.value);
+    this.showProgress = true;
+    // créer un objet FormData pour l'envoyer après comme param.
+    this.formData.coursIds = this.affectationFormGroup.value.coursIds;
+    this.formData.studentId = this.affectationFormGroup.value.studentId;
+
+    this.studentService.affectationStudentCours(this.formData).subscribe({
+      next : value => {
+        this.showProgress = false;
+        alert('Affectation saved Successfully');
+        this.router.navigateByUrl('/admin/cours');
+      },
+      error : err => {
+        console.log(err);
+      }
+    });
+  }
+
+  SelectedStudent(studentId: number) {
+    this.cours.forEach(function (value) {
+      value.disabledCour = false;
+      value.students.forEach(function (ele) {
+        if (ele.studentId === studentId) {
+          value.disabledCour = true;
+          return;
+        }
+      });
+    });
   }
 
 }

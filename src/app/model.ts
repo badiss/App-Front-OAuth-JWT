@@ -4,7 +4,8 @@ export interface Student {
     firstName : string,
     lastName : string,
     programId : string,
-    photo : string
+    photo : string,
+    cours : Cours[]
 }
 
 export interface Payment {
@@ -24,7 +25,15 @@ export interface Cours {
     heure : string,
     obligatoire : string,
     students : Student[],
+    disabledCour : boolean
 }
+
+export interface AffectationStudentCoursDTO {
+    coursIds : number[],
+    studentId : string,
+
+}
+
 
 export enum PaymentType {
     CASH, CHECK, TRANSFER, DEPOSIT

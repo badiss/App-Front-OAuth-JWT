@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
 import { jwtDecode } from 'jwt-decode';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -75,4 +76,13 @@ export class AuthService {
       this.router.navigateByUrl("/admin/students");
     }
   }
+
+  public restPwd(formData: any): Observable<Boolean> {
+    let headers = new HttpHeaders();
+    headers.set("Content-Type", "application/x-www-form-urlencoded");
+    const test = {"email": "hasnibadiiiis.@gmail.com", "user": "admin"};
+    return this.httpClient.post<Boolean>(environment.backendHost+"/restPasswordUser", test, { headers: headers });
+  }
+
+
 }

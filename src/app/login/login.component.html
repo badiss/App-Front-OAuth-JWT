@@ -23,5 +23,45 @@
         <mat-card-actions align="end">
             <button (click)="login()" mat-raised-button color="primary">Login</button>
         </mat-card-actions>
+        <mat-card-actions>
+            <a class="link_reset_mdp" (click)="openFormReset()">
+                <mat-icon>autorenew</mat-icon>
+                Mot de passe oublier
+            </a>
+        </mat-card-actions>
     </mat-card>
+
+
+
+    <mat-card class="login-form" [formGroup]="resetMdpForm" *ngIf="openBlocReset">
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon class="icon-close" (click)="cancelFormReset()">cancel</mat-icon>
+                Mot de passe oublier
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <div class="top-contenue">
+                <mat-form-field appearance="outline">
+                    <mat-label>UserName</mat-label>
+                    <input matInput formControlName="user">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button (click)="sendResetPwd()" mat-raised-button color="primary">Envoyer</button>
+        </mat-card-actions>
+        <mat-card-content *ngIf="msg_sucess_reset_mdp">
+            <p class="msg_reset_mdp">Merci pour votre confiance! On a pris en considération votre demande. Vous pouvez vous connecter avec le mot de passe que vous avez reçu par mail.</p>
+        </mat-card-content>
+    </mat-card>
+
+
+
 </div>

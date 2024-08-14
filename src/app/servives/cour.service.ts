@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cours } from '../model';
 import { environment } from '../../environments/environment.development';
 
@@ -9,7 +9,9 @@ import { environment } from '../../environments/environment.development';
 })
 export class CourService {
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) {
+   }
 
   /**
    * List des cours.

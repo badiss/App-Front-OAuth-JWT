@@ -3,16 +3,16 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span class="menu"></span>
-    <button mat-button routerLink="/admin/home">Home</button>
-    <button mat-button routerLink="/admin/profile">Profile</button>
+    <button mat-button routerLink="/admin/home" routerLinkActive="active-list-item_hori">Home</button>
+    <button mat-button routerLink="/admin/profile" routerLinkActive="active-list-item_hori">Profile</button>
     <button *ngIf="authService.roles.includes('ADMIN')" mat-button [matMenuTriggerFor]="importMenu">
         <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
         Import
     </button>
     
     <mat-menu #importMenu>
-        <button mat-menu-item routerLink="/admin/loadStudents">Load Students</button>
-        <button mat-menu-item routerLink="/admin/loadPayments">Load Payments</button>
+        <button mat-menu-item routerLink="/admin/loadStudents" routerLinkActive="active-list-item_hori">Load Students</button>
+        <button mat-menu-item routerLink="/admin/loadPayments" routerLinkActive="active-list-item_hori">Load Payments</button>
     </mat-menu>
 
     <button mat-button *ngIf="authService.isAuthentificated">

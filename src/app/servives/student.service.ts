@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from '../model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -9,7 +9,9 @@ import { environment } from '../../environments/environment.development';
 })
 export class StudentService {
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) {
+   }
 
 
   /**
@@ -29,7 +31,10 @@ export class StudentService {
   /**
    * Affectation d'un étudiant a un ou plusieurs cours.
    */
- /* public modifierPayment(formData: any, id:number): Observable<Payment> {
-    return this.httpClient.put<Payment>(environment.backendHost+"/updatePayment/"+id, formData);
-  }*/
+  public affectationStudentCours(formData: any): Observable<Student> {
+    let headers = new HttpHeaders();
+    headers.set("Content-Type", "application/json");
+    return this.httpClient.post<Student>(environment.backendHost+"/affectation", formData, { headers: headers });
+  }
+
 }

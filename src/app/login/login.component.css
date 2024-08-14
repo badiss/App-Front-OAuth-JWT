@@ -6,4 +6,29 @@ mat-form-field {
     width: 400px;
     flex: auto;
     margin: auto;
+    margin-top: 20px;
+}
+
+.link_reset_mdp {
+    font-size: 12px;
+    color: blue;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 64px;
+    border: none;
+    outline: none;
+    line-height: inherit;
+    user-select: none;
+    overflow: visible;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0);
+}
+
+.msg_reset_mdp {
+    color: red;
+    font-size: 12px;
 }
