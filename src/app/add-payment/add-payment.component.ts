@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentStatus, PaymentType } from '../model';
 import { PaymentService } from '../servives/payment.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-payment',
@@ -20,7 +21,9 @@ export class AddPaymentComponent implements OnInit {
   public pdfFileUrl! : string;
   showProgress: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private paymentService: PaymentService, private router: Router){}
+  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private paymentService: PaymentService, private router: Router,
+    private datepipe: DatePipe
+  ){}
 
   ngOnInit(): void {
     this.listTypePayment();
@@ -102,8 +105,7 @@ export class AddPaymentComponent implements OnInit {
   updatePayment() {
     this.showProgress = true;
     let date: Date = new Date(this.paymentFormGroup.value.date);
-    let formatDate: string = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
-
+    
     // créer un objet FormData pour l'envoyer après comme param.
    /* let formDataUpdate : FormData = new FormData();
     formDataUpdate.set('date', formatDate);
@@ -113,7 +115,7 @@ export class AddPaymentComponent implements OnInit {
     formDataUpdate.set('status', this.paymentFormGroup.value.status);*/
 
     const data = {
-      date: formatDate,
+      date: this.datepipe.transform(date, 'yyyy-MM-dd'),
       type: this.paymentFormGroup.value.type,
       amount: this.paymentFormGroup.value.amount,
       studentCode: this.studentCode,

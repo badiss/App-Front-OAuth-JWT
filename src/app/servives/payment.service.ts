@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
@@ -43,6 +43,8 @@ export class PaymentService {
   }
 
   public modifierPayment(formData: any, id:number): Observable<Payment> {
-    return this.httpClient.put<Payment>(environment.backendHost+"/updatePayment/"+id, formData);
+    let headers = new HttpHeaders();
+    headers.set("Content-Type", "application/json");
+    return this.httpClient.put<Payment>(environment.backendHost+"/updatePayment/"+id, formData, { headers: headers });
   }
 }

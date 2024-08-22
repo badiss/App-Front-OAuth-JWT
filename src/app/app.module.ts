@@ -38,6 +38,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { appHttpInterceptor } from './interceptors/app-http.interceptor';
 import { CoursModule } from './cours/cours.module';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { CoursModule } from './cours/cours.module';
   ],
   providers: [
     provideAnimationsAsync(),
-    {provide : HTTP_INTERCEPTORS, useClass : appHttpInterceptor, multi : true}
+    {provide : HTTP_INTERCEPTORS, useClass : appHttpInterceptor, multi : true},
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -80,8 +80,7 @@ export class AuthService {
   public restPwd(formData: any): Observable<Boolean> {
     let headers = new HttpHeaders();
     headers.set("Content-Type", "application/x-www-form-urlencoded");
-    const test = {"email": "hasnibadiiiis.@gmail.com", "user": "admin"};
-    return this.httpClient.post<Boolean>(environment.backendHost+"/restPasswordUser", test, { headers: headers });
+    return this.httpClient.post<Boolean>(environment.backendHost+"/restPasswordUser", formData, { headers: headers });
   }
 
 
