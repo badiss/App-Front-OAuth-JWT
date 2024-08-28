@@ -43,6 +43,7 @@ export class PaymentService {
   }
 
   public modifierPayment(formData: any, id:number): Observable<Payment> {
+    console.log(formData);
     let headers = new HttpHeaders();
     headers.set("Content-Type", "application/json");
     return this.httpClient.put<Payment>(environment.backendHost+"/updatePayment/"+id, formData, { headers: headers });

@@ -15,11 +15,25 @@
         <button mat-menu-item routerLink="/admin/loadPayments" routerLinkActive="active-list-item_hori">Load Payments</button>
     </mat-menu>
 
-    <button mat-button *ngIf="authService.isAuthentificated">
-        Bonjour "{{authService.username}}"
+    <button mat-button *ngIf="authService.isAuthentificated" i18n>
+        Hello "{{authService.username}}"
     </button>
 
     <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+
+
+    <button mat-button [matMenuTriggerFor]="importLanguage">
+        <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+        Language
+    </button>
+
+    <mat-menu #importLanguage>
+        <button mat-menu-item (click)="changeLang('fr')">FR</button>
+        <button mat-menu-item (click)="changeLang('en')">EN</button>
+        <button mat-menu-item (click)="changeLang('ar')">AR</button>
+    </mat-menu>
+
+
 </mat-toolbar>
 
 <mat-drawer-container>

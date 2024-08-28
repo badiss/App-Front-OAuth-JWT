@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3419114452596964773" datatype="html">
+        <source> Hello &quot;<x id="INTERPOLATION" equiv-text="{{authService.username}}"/>&quot; </source>
+        <target>Bonjour</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin-template/admin-template.component.html</context>
+          <context context-type="linenumber">19,21</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

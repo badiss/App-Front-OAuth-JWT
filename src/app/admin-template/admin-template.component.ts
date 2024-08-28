@@ -17,4 +17,19 @@ export class AdminTemplateComponent {
     this.authService.logout();
     this.router.navigateByUrl("/login");
   }
+
+  changeLang(lang: string) {
+
+    if (lang === 'fr') {
+      localStorage.setItem('locale', 'fr');
+    }
+
+    if (lang === 'en') {
+      localStorage.setItem('locale', 'en');
+    }
+
+    if (lang === 'ar') {
+      localStorage.setItem('locale', 'ar');
+    }
+  }
 }

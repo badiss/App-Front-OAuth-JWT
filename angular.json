@@ -4,6 +4,20 @@
   "newProjectRoot": "projects",
   "projects": {
     "frontend-ang-app": {
+      // Define locales in the build configuration
+      "i18n": {
+          "sourceLocale": "en-US",
+          "locales": {
+            "ar": {
+              "translation": "src/locale/messages.ar.xlf",
+              "baseHref": "ar/"
+            },
+            "fr": {
+              "translation": "src/locale/messages.fr.xlf",
+              "baseHref": "fr/"
+            }
+          }
+        },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,6 +37,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": [
+              "ar",
+              "fr"
+            ],
             "outputPath": "dist/frontend-ang-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -56,6 +74,14 @@
               ],
               "outputHashing": "all"
             },
+             // set the localize build configuration option
+            // this will instruct the AOT compiler to use the translation configuration
+            "ar": {
+              "localize": ["ar"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -75,6 +101,13 @@
           "configurations": {
             "production": {
               "buildTarget": "frontend-ang-app:build:production"
+            },
+             // Configurations for the production build
+            "ar": {
+              "buildTarget": "frontend-ang-app:build:ar"
+            },
+            "fr": {
+              "buildTarget": "frontend-ang-app:build:fr"
             },
             "development": {
               "buildTarget": "frontend-ang-app:build:development"
