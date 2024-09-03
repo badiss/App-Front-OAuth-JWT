@@ -39,6 +39,8 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { appHttpInterceptor } from './interceptors/app-http.interceptor';
 import { CoursModule } from './cours/cours.module';
 import { DatePipe } from '@angular/common';
+import { httpErrorInterceptorInterceptor } from './interceptors/http-error.interceptor.interceptor';
+import { AlertifyService } from './servives/alertify.service';
 
 
 @NgModule({
@@ -87,8 +89,10 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     provideAnimationsAsync(),
+    {provide : HTTP_INTERCEPTORS, useClass : httpErrorInterceptorInterceptor, multi : true},
     {provide : HTTP_INTERCEPTORS, useClass : appHttpInterceptor, multi : true},
-    DatePipe
+    DatePipe,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

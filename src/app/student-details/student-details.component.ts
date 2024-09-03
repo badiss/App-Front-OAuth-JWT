@@ -6,6 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../servives/auth.service';
+import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AlertifyService } from '../servives/alertify.service';
 
 @Component({
   selector: 'app-student-details',
@@ -26,7 +29,7 @@ export class StudentDetailsComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private activatedRoute: ActivatedRoute, private paymentService: PaymentService,
-     private router: Router, private AuthService: AuthService
+     private router: Router, private AuthService: AuthService, private alertify: AlertifyService
   ) {
 
   }
@@ -36,7 +39,7 @@ export class StudentDetailsComponent implements OnInit{
     this.isAdmin = this.AuthService.roleUserConected;
     this.studentCode = this.activatedRoute.snapshot.params['code'];
     if (this.studentCode) {
-      setTimeout(()=>{                        
+      setTimeout(()=>{
         this.getListPaymentToStudentWithCode(this.studentCode);
     }, 500);
     }
@@ -54,11 +57,14 @@ export class StudentDetailsComponent implements OnInit{
       },
       error : err => {
         this.showProgress = false;
-        console.log(err);
+        this.alertify.error("Il n'existe pas des payments avec ce code d'étudiant");
       }
     });
   }
 
+  /**
+   * Ajouter un payment
+   */
   public addPayment() {
     this.router.navigateByUrl('/admin/add-payment/'+this.studentCode+'/null');
   }
@@ -73,7 +79,7 @@ export class StudentDetailsComponent implements OnInit{
     this.paymentService.supprimerPayment(element.id).subscribe({
       next : resp => {
         this.showProgress = true;
-        setTimeout(()=>{                        
+        setTimeout(()=>{
           this.getListPaymentToStudentWithCode(this.studentCode);
       }, 500);
       },

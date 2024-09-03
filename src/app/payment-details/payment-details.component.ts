@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentService } from '../servives/payment.service';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-payment-details',
@@ -32,7 +34,7 @@ export class PaymentDetailsComponent implements OnInit{
   }
 
   afterLoadComplete(event: any) {
-    
+
   }
 
 }
