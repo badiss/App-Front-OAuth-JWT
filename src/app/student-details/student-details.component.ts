@@ -93,4 +93,7 @@ export class StudentDetailsComponent implements OnInit{
     this.router.navigateByUrl('/admin/add-payment/'+this.studentCode+'/'+element.id);
   }
 
+  facturePayment(ele: Payment){
+    this.router.navigateByUrl('admin/factures/list/'+ele.id);
+  }
 }

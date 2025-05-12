@@ -1,0 +1,6 @@
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: #5a810c;
+}
+.mat-mdc-raised-button:not(:disabled) {
+    color: #ffffff;
+}

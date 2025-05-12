@@ -28,6 +28,15 @@ export interface Cours {
     disabledCour : boolean
 }
 
+export interface Facture {
+    idFacture : number,
+    code : string,
+    trimestre : string,
+    montant : number,
+    status : string,
+    payment : Payment,
+}
+
 export interface AffectationStudentCoursDTO {
     coursIds : number[],
     studentId : string,
@@ -42,3 +51,12 @@ export enum PaymentType {
 export enum PaymentStatus {
     CREATED, VALIDATED, REJECTED
 }
+
+export enum INVOICE_STATUS {
+    DONE = 'DONE',
+    PENDING = 'PENDING'
+  }
+
+  export enum TrimestreType {
+    T1 = "T1", T2 = "T2", T3 = "T3"
+  }

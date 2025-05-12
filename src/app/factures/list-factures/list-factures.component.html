@@ -1,0 +1,39 @@
+
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Gestions de Payment (List des factures)
+            </mat-card-title>
+        </mat-card-header>
+
+        <br>
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <div class="top-contenue">
+                <h1>List des Factures</h1>
+            </div>
+
+            <p>Nombre des factures <button mat-raised-button color="success" class="btn btn-success btn-sm">Done</button>
+                {{ invoicesInDone().length }} de {{ invoiceList().length }}
+            </p>
+            <p>Montant total payé par l'étudiant dans les factures  <button mat-raised-button color="success">Done</button>
+                {{ totalAmountInDone() }} €
+            </p>
+            
+
+            <br>
+
+        </mat-card-content>
+    </mat-card>
+
+    <br>
+   <app-details-facture [item]="invoiceItem" *ngFor="let invoiceItem of invoiceList()" (updateFacture)='getFactureUpdate($event)' />
+
+   <br>
+   <button mat-raised-button color="success" (click)="updateFacturesPayment()">Valider</button>
+   @if (showProgress) {
+    <mat-spinner></mat-spinner>
+}
+</div>

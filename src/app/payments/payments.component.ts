@@ -40,4 +40,8 @@ export class PaymentsComponent implements OnInit {
     this.router.navigateByUrl("/admin/payment-details/"+element.id);
   }
 
+  facturePayment(ele: Payment){
+    this.router.navigateByUrl('admin/factures/list/'+ele.id);
+  }
+
 }

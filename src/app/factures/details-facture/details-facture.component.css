@@ -1,0 +1,11 @@
+.width-card {
+    width: 70%;
+}
+
+.test {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 200px;
+    width: 100%;
+}

@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" class="width-card">
+    <mat-card-header>
+      <div class="test">
+        <mat-card-title>Code: {{ item.code }}</mat-card-title>
+        <mat-card-subtitle>Montant: {{ item.montant }}</mat-card-subtitle>
+        <mat-card-subtitle>Trimestre: {{ item.trimestre }}</mat-card-subtitle>
+        <mat-card-subtitle>Statut: {{ item.status }}</mat-card-subtitle>
+      </div>
+      
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" *ngIf="item.status === INVOICE_STATUS.PENDING" (click)="changeToDone()">PASSER DONE</button>
+      <button mat-raised-button color="accent" *ngIf="item.status === INVOICE_STATUS.DONE" (click)="changeToPending()">PASSER PENDING</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>

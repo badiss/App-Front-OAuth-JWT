@@ -41,6 +41,7 @@ import { CoursModule } from './cours/cours.module';
 import { DatePipe } from '@angular/common';
 import { httpErrorInterceptorInterceptor } from './interceptors/http-error.interceptor.interceptor';
 import { AlertifyService } from './servives/alertify.service';
+import { FacturesModule } from './factures/factures.module';
 
 
 @NgModule({
@@ -82,10 +83,12 @@ import { AlertifyService } from './servives/alertify.service';
     MatSnackBarModule,
     PdfViewerModule,
     MatProgressSpinnerModule,
-    CoursModule
+    CoursModule,
+    FacturesModule
   ],
   exports: [
-    CoursModule
+    CoursModule,
+    FacturesModule
   ],
   providers: [
     provideAnimationsAsync(),

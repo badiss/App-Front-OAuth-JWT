@@ -69,6 +69,7 @@
                         <button mat-raised-button color="primary" (click)="paymentDetails(element)">Détails</button>
                         <button mat-raised-button color="warn" [disabled]="!isAdmin" (click)="deletePayment(element)">Suprimer</button>
                         <button mat-raised-button color="success" [disabled]="!isAdmin" (click)="updatePayment(element)">Modifier</button>
+                        <button mat-raised-button color="accent" (click)="facturePayment(element)">Facture</button>
                     </td>
                 </ng-container>
               

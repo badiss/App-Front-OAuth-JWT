@@ -50,6 +50,10 @@ const routes: Routes = [
       {
         path: 'cours',
         loadChildren: () => import('./cours/cours-routing.module').then(module => module.CoursRoutingModule),
+      },
+      {
+        path: 'factures',
+        loadChildren: () => import('./factures/factures-routing.module').then(module => module.FacturesRoutingModule),
       }
 
   ] },
